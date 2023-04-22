@@ -218,7 +218,7 @@ bool FilterBar::Impl::tracker_filter_model_update()
         for (size_t j = 0, n = tr_torrentTrackerCount(&raw_torrent); j < n; ++j)
         {
             auto const view = tr_torrentTracker(&raw_torrent, j);
-            torrent_sites_and_hosts.try_emplace(std::data(view.sitename), view.host);
+            torrent_sites_and_hosts.try_emplace(std::data(view.sitename), view.host_and_port);
         }
 
         for (auto const& [sitename, host] : torrent_sites_and_hosts)
